@@ -1,5 +1,5 @@
 from PySide6.QtGui import QPixmap, QMouseEvent, Qt
-from PySide6.QtWidgets import QWidget, QLabel, QVBoxLayout
+from PySide6.QtWidgets import QWidget, QLabel, QHBoxLayout
 
 
 class ImageButton(QWidget):
@@ -19,9 +19,8 @@ class ImageButton(QWidget):
             print(f"Error loading image: {e}")
 
         # Create a layout for the widget
-        layout = QVBoxLayout()
+        layout = QHBoxLayout()
         layout.addWidget(self.image_label)
-        layout.setContentsMargins(0, 0, 0, 0)
         self.setLayout(layout)
 
     def mousePressEvent(self, event: QMouseEvent) -> None:

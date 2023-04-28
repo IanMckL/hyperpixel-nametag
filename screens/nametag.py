@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QWidget, QVBoxLayout
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout
 
 from screens.utils.image_button import ImageButton
 from screens.utils.navigation_grid import NavigationGrid
@@ -12,7 +12,16 @@ class Nametag(QWidget):
 
         # Add logo if logo_path exists
         if logo_name:
-            self.logo = ImageButton(main_path + f'/assets/images/{logo_name}', 500)
+            logo_button = ImageButton(main_path + f'/assets/images/{logo_name}', 500)
+
+            logo_container = QHBoxLayout()
+            logo_container.addWidget(logo_button)
+
+            logo_widget = QWidget()
+            logo_widget.setContentsMargins(0, 0, 0, 0)
+            logo_widget.setLayout(logo_container)
+
+            self.logo = logo_widget
 
         self.name_label = TextBox(main_path, f'{name}', size=70)
         self.title_label = TextBox(main_path, f'{title}', size=40)
