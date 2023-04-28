@@ -19,5 +19,7 @@ class TextBox(QWidget):
 
         layout = QHBoxLayout()
         layout.addWidget(self.text)
+        layout.setContentsMargins(0, 0, 0, 0)
 
         self.setLayout(layout)
+        self.setMaximumHeight(500 / 3)

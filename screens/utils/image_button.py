@@ -1,5 +1,5 @@
 from PySide6.QtGui import QPixmap, QMouseEvent, Qt
-from PySide6.QtWidgets import QWidget, QLabel, QVBoxLayout
+from PySide6.QtWidgets import QWidget, QLabel, QHBoxLayout
 
 
 class ImageButton(QWidget):
@@ -19,14 +19,17 @@ class ImageButton(QWidget):
             print(f"Error loading image: {e}")
 
         # Create a layout for the widget
-        layout = QVBoxLayout()
+        layout = QHBoxLayout()
         layout.addWidget(self.image_label)
         self.setLayout(layout)
 
     def mousePressEvent(self, event: QMouseEvent) -> None:
         # Trigger on_click function if one is provided
         if event.button() in (Qt.LeftButton, Qt.RightButton) and self.on_click:
-            self.on_click()
+            try:
+                self.on_click()
+            except Exception as e:
+                print(f"Error completing mouse press event: {e}")
         # Handle case for no function provided
         else:
             print('Nothing to do!')

@@ -9,4 +9,14 @@ class MainWindow(QMainWindow):
         self.setStyleSheet('background-color: black')
         self.stacked_widget = QStackedWidget(self)
         self.setCentralWidget(self.stacked_widget)
-        self.stacked_widget.addWidget(Nametag(main_path))
+
+        # Screens
+        nametag = Nametag(main_path, self.stacked_widget, "Ian Larsen", "Software Engineer", "logo_test")
+        nametag2 = Nametag(main_path, self.stacked_widget, "Test", "Testing")
+
+        # Add screens to grid
+        self.stacked_widget.addWidget(nametag)
+        self.stacked_widget.addWidget(nametag2)
+
+        # Set initial state
+        self.stacked_widget.setCurrentIndex(0)
