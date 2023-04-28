@@ -18,13 +18,11 @@ class Nametag(QWidget):
         self.title_label = TextBox(main_path, f'{title}', size=40)
         self.navigation = NavigationGrid(main_path, main_stack)
 
+        layout.addWidget(self.name_label)
         if logo_name:
             layout.addWidget(self.logo)
-
-        layout.addWidget(self.name_label)
         layout.addWidget(self.title_label)
         layout.addWidget(self.navigation)
         layout.setSpacing(0)
 
-        self.setStyleSheet('border: 2px solid white')
         self.setLayout(layout)
