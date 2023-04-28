@@ -21,12 +21,16 @@ class ImageButton(QWidget):
         # Create a layout for the widget
         layout = QVBoxLayout()
         layout.addWidget(self.image_label)
+        layout.setContentsMargins(0, 0, 0, 0)
         self.setLayout(layout)
 
     def mousePressEvent(self, event: QMouseEvent) -> None:
         # Trigger on_click function if one is provided
         if event.button() in (Qt.LeftButton, Qt.RightButton) and self.on_click:
-            self.on_click()
+            try:
+                self.on_click()
+            except Exception as e:
+                print(f"Error completing mouse press event: {e}")
         # Handle case for no function provided
         else:
             print('Nothing to do!')
